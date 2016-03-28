@@ -1,0 +1,16 @@
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main(){
+	ifstream in("Iofile.cpp");
+	ofstream out("Iofile.txt");
+	out<<in.rdbuf();
+	in.close();
+	out.close();
+	ifstream in2("Iofile.cpp",ios::in|ios::out);
+	ostream out2(in2.rdbuf());
+	cout<<in2.rdbuf();
+	out2<<"Where does this end up?\n\n";
+	in2.seekg(0,ios::cur);
+	cout<<in2.rdbuf();
+}
